@@ -1,0 +1,10 @@
+kermit    2.1
+daisy     3.8
+grover    0.7
+minnie    4.0
+piggy     3.9
+pluto     2.9
+mickey    1.1
+donald    2.8
+fuzzy     3.1
+count     4.0
