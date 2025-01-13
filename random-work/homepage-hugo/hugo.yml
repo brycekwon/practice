@@ -1,0 +1,115 @@
+baseURL: "https://www.brycekwon.com"
+languageCode: en-us
+title: "Bryce Kwon | Undergraduate Computer Science Student"
+copyright: "© Bryce Kwon 2024"
+
+disableKinds: ["rss"]
+disableHugoGeneratorInject: true
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: "production"
+  author: "Bryce Kwon"
+  DateFormat: "January 2, 2006"
+
+  defaultTheme: dark
+  disableThemeToggle: false
+
+  hideFooter: true
+  hideAuthor: true
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowFullTextinRSS: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: false
+
+  assets:
+    disableHLJS: true
+    disableFingerprinting: false
+    favicon: "/favicon.ico"
+
+  label:
+    text: "Bryce Kwon's Website"
+  
+  homeInfoParams:
+    Title: "Hi there. I'm a bug on the Internet."
+    Content: "I'm Bryce Kwon, a fourth-year undergraduate computer science student interested in software engineering, computer networks, and cybersecurity. This website is meant to be my **home base** on the internet, where I can share my thoughts, projects, and experiences."
+
+  # profileMode:
+  #   enabled: false
+  #   title: "Hi there. I'm a bug on the internet."
+  #   subtitle: "I'm Bryce Kwon, a fourth-year undergraduate computer science student interested in software engineering, computer networks, and cybersecurity."
+  #   imageUrl: "/images/avatar.png"
+
+  # socialIcons:
+  #   - name: github
+  #     url: "https://github.com/Wonderfall"
+  #   - name: linkedin
+  #     url: "https://www.linkedin.com/in/brycekwon"
+
+  cover:
+    hidden: true
+    hiddenInList: true
+    hiddenInSingle: true
+
+  editPost:
+    URL: "https://github.com/brycekwon/www.brycekwon.com/blob/main/content"
+    Text: "Suggest Changes"
+    appendFilePath: true
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "summary"]
+
+outputs:
+  home:
+    - "HTML"
+    - "JSON"
+
+markup:
+  highlight:
+    style: "dracula"
+    lineNos: false
+    noClasses: false
+    guessSyntax: true
+
+menu:
+  main:
+    # - identifier: "search"
+    #   name: "Search"
+    #   url: "/search"
+    #   weight: 10
+    # - identifier: "tags"
+    #   name: "Tags"
+    #   url: "/tags"
+    #   weight: 20
+    - identifier: "LinkedIn"
+      name: "LinkedIn"
+      url: "https://www.linkedin.com/in/brycekwon"
+      weight: 10
+    - identifier: "GitHub"
+      name: "GitHub"
+      url: "https://github.com/brycekwon"
+      weight: 20

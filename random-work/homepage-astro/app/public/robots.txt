@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /posts/
+Disallow: /projects/
+
+Sitemap: https://www.brycekwon.com/sitemap-index.xml

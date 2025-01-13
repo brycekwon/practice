@@ -1,0 +1,38 @@
+{
+    "name": "homepage",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "uninline": "node remove-inline.cjs",
+        "dev": "astro dev",
+        "prev": "astro preview",
+        "build": "astro check && astro build && npm run uninline",
+        "build:prev": "astro check && astro build && npm run uninline && astro preview",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "dependencies": {
+        "@astrojs/check": "^0.5.9",
+        "@astrojs/mdx": "^2.2.0",
+        "@astrojs/sitemap": "^3.1.1",
+        "@astrojs/tailwind": "^5.1.0",
+        "@catppuccin/tailwindcss": "^0.1.6",
+        "@fontsource/inter": "^5.0.17",
+        "@fontsource/lora": "^5.0.16",
+        "@tailwindcss/typography": "^0.5.10",
+        "astro": "^4.5.6",
+        "clsx": "^2.1.0",
+        "sharp": "^0.33.3",
+        "tailwind-merge": "^2.2.2",
+        "tailwindcss": "^3.4.1",
+        "tiny-glob": "^0.2.9",
+        "typescript": "^5.4.2"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.18.2",
+        "@typescript-eslint/parser": "^8.18.2",
+        "eslint": "^8.57.1",
+        "eslint-plugin-astro": "^1.3.1",
+        "eslint-plugin-jsx-a11y": "^6.10.2"
+    }
+}

@@ -1,0 +1,25 @@
+{{- if not (.Param "hideFooter") }}
+<footer class="footer">
+    <span>
+        <a href='{{ "licenses" | relURL }}' aria-label="View Copyright Notice">
+            {{ site.Copyright | markdownify }}
+        </a>
+    </span>
+    -
+    <span>
+        <a href='{{ "terms-and-privacy" | relURL }}' aria-label="View Terms and Privacy">
+            Terms and Privacy
+        </a>
+    </span>
+</footer>
+{{- end }}
+
+{{- if (not site.Params.disableScrollToTop) }}
+<a href="#top" aria-label="go to top" title="Go to Top" class="top-link" id="top-link">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+{{- end }}
+
+{{- partial "script.html" . }}

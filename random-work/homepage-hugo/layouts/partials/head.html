@@ -1,0 +1,73 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{{- if .Params.noindex }}
+    <meta name="robots" content="noindex, nofollow">
+{{- else }}
+    <meta name="robots" content="index, follow">
+{{- end }}
+
+<title>
+  {{ if .IsHome }}
+    {{ .Site.Title }}
+  {{ else }}
+    {{ .Title }} | {{ .Site.Params.author }}
+  {{ end }}
+</title>
+
+<meta name="keywords" content='
+  {{- with .Keywords -}}
+    {{- range $i, $e := . }}{{ if $i }}, {{ end }} {{ $e }}{{ end }}
+  {{- end -}}
+'>
+<meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if or .IsPage .IsSection}}
+    {{- .Summary | default (printf "%s - %s" .Title  site.Title) }}{{- else }}
+    {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
+<link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
+
+{{- $includes := slice }}
+{{- $includes = $includes | append (" " | resources.FromString "assets/css/includes-blank.css")}}
+
+{{- if not (eq site.Params.assets.disableScrollBarStyle true) }}
+    {{- $ScrollStyle := (resources.Get "css/includes/scroll-bar.css") }}
+    {{- $includes = (append $ScrollStyle $includes) }}
+{{- end }}
+
+{{- $includes_all := $includes | resources.Concat "assets/css/includes.css" }}
+
+{{- $theme_vars := (resources.Get "css/core/theme-vars.css") }}
+{{- $reset := (resources.Get "css/core/reset.css") }}
+{{- $media := (resources.Get "css/core/zmedia.css") }}
+{{- $license_css := (resources.Get "css/core/license.css") }}
+{{- $common := (resources.Match "css/common/*.css") | resources.Concat "assets/css/common.css" }}
+{{- $commonHighlight := (resources.Get "css/common/chroma.css") }}
+
+{{- $core := (slice $theme_vars $reset $common $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
+{{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify }}
+
+{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css"  }}
+
+{{- if not site.Params.assets.disableFingerprinting }}
+{{- $stylesheet := $stylesheet | minify | fingerprint }}
+<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
+{{- else }}
+<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
+{{- end }}
+
+<noscript>
+    {{- $noscript := (resources.Get "css/includes/noscript.css") }}
+    {{- if not site.Params.assets.disableFingerprinting }}
+    {{- $noscript := $noscript | minify | fingerprint }}
+    <link crossorigin="anonymous" href="{{ $noscript.RelPermalink }}" integrity="{{ $noscript.Data.Integrity }}" rel="preload stylesheet" as="style">
+    {{- else }}
+    <link crossorigin="anonymous" href="{{ $noscript.RelPermalink }}" rel="preload stylesheet" as="style">
+    {{- end }}
+</noscript>
+
+<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
+<meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
+
+{{- template "partials/templates/opengraph.html" . }}
+{{- template "partials/templates/twitter_cards.html" . }}
+{{- template "partials/templates/schema_json.html" . }}

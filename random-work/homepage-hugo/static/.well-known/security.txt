@@ -1,0 +1,13 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Contact: mailto:75634db6-9d87-43e7-b448-f3ba828bff16@simplelogin.com
+Expires: 2026-12-08T00:00:00.000Z
+Canonical: https://www.brycekwon.com/.well-known/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQquP8+Fl2AIT/M8Au29Q/+g6/A6gUCZ1ZcAgAKCRC29Q/+g6/A
+6l1TAP9xMYapSqOzCZ7qWff/GOgXsZtI8xummMF+R4cwXepsLgD+IuaVYhMpL6hw
+5kAiFFVqsTamcb/vkCL4jllTvMouygA=
+=YlXJ
+-----END PGP SIGNATURE-----
