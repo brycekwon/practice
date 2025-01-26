@@ -1,0 +1,18 @@
+a) What will the following code snippet do / produce?
+"for epoch in range(n_epoch):" (Note: n_epoch is a scalar)
+
+this is a for loop that will iterate 'n_epoch' times, saving the
+value of the current index into 'epoch'.
+
+
+b) What will the following code snippet do / produce?
+dataset = np.true_divide(dataset,max(dataset))” (Note: dataset is a 2D array of
+integer values)
+
+this will normalize 'dataset' by dividing each element by the max value found.
+
+c) What will the following code snippet do / produce?
+“dataset = np.true_divide(dataset,max(dataset))” (Note: dataset is a 2D array of
+integer values)
+
+duplicate of b?
