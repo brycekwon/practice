@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
         # for distinguishing the different batches
         COLORS = iter(['red', 'blue', 'green', 'orange', 'purple', 'brown'])
-        
+
         for batch_size in BATCH_SIZES:
             results[batch_size] = train_model(X, Y, rows, batch_size, N_EPOCHS)
             axes[1,i].plot(results[batch_size]['MSE'], label=f'Batch Size: {batch_size}')
@@ -79,6 +79,7 @@ if __name__ == "__main__":
             prediction = results[batch_size]['a1'] + results[batch_size]['a0'] * np.max(Y_real)
 
             print(f"batch {batch_size}:\tR^2 = {results[batch_size]['r2']:.4f}\tMSE = {results[batch_size]['MSE'][-1]:.4f}\tPrediction = {prediction:.4f}")
+            print(f"a1: {results[batch_size]['a1']:.4f}, a0: {results[batch_size]['a0']:.4f}")
 
 
     for ax in axes.flat:
