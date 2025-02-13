@@ -6,7 +6,15 @@ plt.ylabel('x2')
 plt.title('Preceptron learning')
 
 # don't forget to normalize data when working with "real data set"
-data = np.array([[1,1,1],[1,1,2],[-1,2,-2],[1,-1,1],[-1,-1,-2],[1,-2,1],[-1,-2,-1]])
+data = np.array([
+    [1,1,1],
+    [1,1,2],
+    [-1,2,-2],
+    [1,-1,1],
+    [-1,-1,-2],
+    [1,-2,1],
+    [-1,-2,-1]
+])
 
 rows = data.shape[0]
 cols = data.shape[1]
