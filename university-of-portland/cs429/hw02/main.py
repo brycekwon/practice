@@ -32,7 +32,7 @@ def process_images(images: str, output: str, pre: str) -> None:
 def parser(output: str) -> tuple[np.ndarray, np.ndarray]:
     with open(output, 'r') as file:
         lines = file.readlines()
-        
+
         labels = np.zeros(len(lines))
         histograms = np.zeros((len(lines), 256 * 3))
 
@@ -41,7 +41,7 @@ def parser(output: str) -> tuple[np.ndarray, np.ndarray]:
 
             labels[i] = int(label)
             histograms[i] = np.array(list(map(float, data.split(','))))
-    
+
     return labels, histograms
 
 
@@ -66,10 +66,10 @@ def train_perceptron(X, L, N, mu):
                 X_t = np.concatenate(([1], X[j, 0:]))
                 W_t = np.multiply(np.multiply(E, X_t), mu)
                 W = np.subtract(W, W_t)
-        
+
         CA[i] = acc / rows * 100
         TE[i] = (rows - acc) / rows * 100
-    
+
     return {
         "W": W,
         "CA": CA,
@@ -86,7 +86,7 @@ def test_perceptron(weights: np.ndarray, hist: np.ndarray) -> int:
         return 1
     else:
         # aurora is not present
-        return 0
+        return -1
 
 
 def use_perceptron(weights: np.ndarray, filename: str) -> int:
@@ -150,23 +150,23 @@ if __name__ == "__main__":
     # Using Data                                                              #
     ###########################################################################
 
-    K = np.zeros(len(os.listdir("./no_aurora")))
-    with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
-        results = executor.map(lambda filename: use_perceptron(Z["W"], os.path.join("./no_aurora", filename)), os.listdir("./no_aurora"))
-        for i, x in enumerate(results):
-            K[i] = x
-    print(f"{np.sum(K == 0)} / {len(os.listdir("./no_aurora"))} ({np.sum(K == 0) / len(os.listdir("./no_aurora")) * 100}%)")
+    # K = np.zeros(len(os.listdir("./no_aurora")))
+    # with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+    #     results = executor.map(lambda filename: use_perceptron(Z["W"], os.path.join("./no_aurora", filename)), os.listdir("./no_aurora"))
+    #     for i, x in enumerate(results):
+    #         K[i] = x
+    # print(f"{np.sum(K == 0)} / {len(os.listdir("./no_aurora"))} ({np.sum(K == 0) / len(os.listdir("./no_aurora")) * 100}%)")
 
-    K = np.zeros(len(os.listdir("./yes_aurora")))
-    with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
-        results = executor.map(lambda filename: use_perceptron(Z["W"], os.path.join("./yes_aurora", filename)), os.listdir("./yes_aurora"))
-        for i, x in enumerate(results):
-            K[i] = x
-    print(f"{np.sum(K == 1)} / {len(os.listdir("./yes_aurora"))} ({np.sum(K == 1) / len(os.listdir("./yes_aurora")) * 100}%)")
+    # K = np.zeros(len(os.listdir("./yes_aurora")))
+    # with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+    #     results = executor.map(lambda filename: use_perceptron(Z["W"], os.path.join("./yes_aurora", filename)), os.listdir("./yes_aurora"))
+    #     for i, x in enumerate(results):
+    #         K[i] = x
+    # print(f"{np.sum(K == 1)} / {len(os.listdir("./yes_aurora"))} ({np.sum(K == 1) / len(os.listdir("./yes_aurora")) * 100}%)")
 
     # K = np.zeros(len(os.listdir("./not_known")), dtype=int)
     # for i, e in enumerate(os.listdir("./not_known")):
     #     K[i] = (use_perceptron(Z["W"], os.path.join("./not_known/" + e)))
-    
+
     # with open("not_known.txt", "w") as f:
     #     f.write(','.join(map(str, K)) + '\n')
